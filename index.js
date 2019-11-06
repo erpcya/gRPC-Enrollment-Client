@@ -13,18 +13,18 @@
  * You should have received a copy of the GNU General Public License                 *
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.            *
  ************************************************************************************/
-class Access {
+class Enrollment {
 
   /**
    * Constructor, No authentication required
    * @param {string} host
    * @param {string} version
-   * @param {string} language
+   * @param {string} applicationType Application Type or client Type fro request
    */
-  constructor(host, version, language = 'en_US') {
+  constructor(host, version, applicationType) {
     this.host = host;
     this.version = version;
-    this.language = language;
+    this.applicationType = applicationType;
   }
 
   /**
@@ -33,141 +33,57 @@ class Access {
    */
   getService() {
     const grpc_promise = require('grpc-promise');
-    const { AccessServicePromiseClient } = require('./src/grpc/proto/access_grpc_web_pb.js');
-    var requestService = new AccessServicePromiseClient(this.host);
+    const { EnrollmentServiceClient } = require('./src/grpc/proto/enrollment_grpc_web_pb.js');
+    var requestService = new EnrollmentServiceClient(this.host);
     grpc_promise.promisifyAll(requestService);
     return requestService;
   }
 
   /**
    * Get user roles assigned
+   * @param {string} name Name
    * @param {string} userName User Name
-   * @param {string} userPass User Pass
-   * @return {UserRoles} Roles Assigned to User
+   * @param {string} eMail EMail
+   * @return {User} Enrolled User
    */
-  requestUserInfo(userName, userPass) {
-    const { LoginRequest } = require('./src/grpc/proto/access_pb.js');
-    let request = new LoginRequest();
+  enrollUser(name, userName, eMail) {
+    const { EnrollUserRequest } = require('./src/grpc/proto/enrollment_pb.js');
+    let request = new EnrollUserRequest();
+    request.setName(name);
     request.setUsername(userName);
-    request.setUserpass(userPass);
+    request.setEmail(eMail);
     request.setClientversion(this.version);
     request.setLanguage(this.language);
-    return this.getService().getUserInfo(request);
+    return this.getService().enrollUser(request);
   }
 
   /**
-   * User Info
-   * @param {string} sessionUuid Session
-   * @return {UserInfoValue} User Info Value
-   */
-  requestUserInfoFromSession(sessionUuid) {
-    const { UserInfoRequest } = require('./src/grpc/proto/access_pb.js');
-    let request = new UserInfoRequest();
-    request.setSessionuuid(sessionUuid);
-    request.setClientversion(this.version);
-    request.setLanguage(this.language);
-    return this.getService().getUserInfoFromSession(request);
-  }
-
-  /**
-   * Make login
+   * Request Reset a Password
    * @param {string} userName User Name
-   * @param {string} userPass User Pass
-   * @param {string} organizationUuid Organization
-   * @param {string} language Login Language
-   * @param {string} warehouseUuid Warehouse
-   * @return {Session} Session assigned
+   * @param {string} eMail User Mail
+   * @return {ResetPasswordResponse} Response Request
    */
-  requestLogin(userName, userPass, roleUuid, organizationUuid = null, language = 'en_US', warehouseUuid = null) {
-    const { LoginRequest } = require('./src/grpc/proto/access_pb.js');
-    let request = new LoginRequest();
+  requestResetPassword(userName, eMail) {
+    const { ResetPasswordRequest } = require('./src/grpc/proto/enrollment_pb.js');
+    let request = new ResetPasswordRequest();
     request.setUsername(userName);
-    request.setUserpass(userPass);
-    request.setRoleuuid(roleUuid);
-    request.setOrganizationuuid(organizationUuid);
-    request.setLanguage(language);
-    request.setWarehouseuuid(warehouseUuid);
-    request.setClientversion(this.version);
-    return this.getService().runLogin(request);
+    request.setEmail(eMail);
+    return this.getService().resetPassword(request);
   }
 
   /**
-   * Make login with Role, Organization and Warehouse as default values
-   * @param {string} userName User Name
-   * @param {string} userPass User Pass
-   * @param {string} language Login Language
-   * @return {Session} Session assigned
+   * Request Reset a Password from a Token
+   * @param {string} token token assigned
+   * @param {string} password Password to reset
+   * @return {ResetPasswordResponse} Response Request
    */
-  requestLoginDefault(userName, userPass, language = 'en_US') {
-    const { LoginRequest } = require('./src/grpc/proto/access_pb.js');
-    let request = new LoginRequest();
-    request.setUsername(userName);
-    request.setUserpass(userPass);
-    request.setLanguage(language);
-    request.setClientversion(this.version);
-    return this.getService().runLoginDefault(request);
-  }
-
-  /**
-   * Logout Session
-   * @param {string} sessionUuid Session
-   * @return {Session} Session Logout
-   */
-  requestLogout(sessionUuid) {
-    const { LogoutRequest } = require('./src/grpc/proto/access_pb.js');
-    let request = new LogoutRequest();
-    request.setSessionuuid(sessionUuid);
-    request.setClientversion(this.version);
-    return this.getService().runLogout(request);
-  }
-
-  /**
-   * Get Session
-   * @param {string} sessionUuid Session
-   * @return {Session} Session getted
-   */
-  getSession(sessionUuid) {
-    const { SessionRequest } = require('./src/grpc/proto/access_pb.js');
-    let request = new SessionRequest();
-    request.setSessionuuid(sessionUuid);
-    request.setClientversion(this.version);
-    return this.getService().getSession(request);
-  }
-
-  /**
-   * get User Menu
-   * @param {string} sessionUuid Session
-   * @return {UserInfoValue} User Info Value
-   */
-  requestUserMenuFromSession(sessionUuid) {
-    const { UserInfoRequest } = require('./src/grpc/proto/access_pb.js');
-    let request = new UserInfoRequest();
-    request.setSessionuuid(sessionUuid);
-    request.setClientversion(this.version);
-    request.setLanguage(this.language);
-    return this.getService().getMenuAndChild(request);
-  }
-
-  /**
-   * Role Change
-   * @param {object} attributes Session
-   * @param {string} attributes.sessionUuid
-   * @param {string} attributes.roleUuid
-   * @param {string} attributes.organizationUuid
-   * @param {string} attributes.warehouseUuid
-   */
-  requestChangeRole(attributes) {
-    const { ChangeRoleRequest } = require('./src/grpc/proto/access_pb.js');
-    let request = new ChangeRoleRequest();
-
-    request.setSessionuuid(attributes.sessionUuid);
-    request.setRoleuuid(attributes.roleUuid);
-    request.setOrganizationuuid(attributes.organizationUuid);
-    request.setWarehouseuuid(attributes.warehouseUuid);
-    request.setClientversion(this.version);
-    request.setLanguage(this.language);
-    return this.getService().runChangeRole(request);
+  resetPasswordFromToken(token, password) {
+    const { ResetPasswordTokenRequest } = require('./src/grpc/proto/enrollment_pb.js');
+    let request = new ResetPasswordTokenRequest();
+    request.setToken(token);
+    request.setPassword(password);
+    return this.getService().resetPasswordFromToken(request);
   }
 }
 
-module.exports = Access;
+module.exports = Enrollment;
