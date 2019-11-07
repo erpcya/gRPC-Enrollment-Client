@@ -19,7 +19,7 @@ class Enrollment {
    * Constructor, No authentication required
    * @param {string} host
    * @param {string} version
-   * @param {string} applicationType Application Type or client Type fro request
+   * @param {string} applicationType Application Type or client Type from request
    */
   constructor(host, version, applicationType) {
     this.host = host;
@@ -29,12 +29,12 @@ class Enrollment {
 
   /**
    * Load gRPC Connection
-   * @return {Object} Return request for get data
+   * @return {object} Return request for get data
    */
   getService() {
     const grpc_promise = require('grpc-promise');
-    const { EnrollmentServiceClient } = require('./src/grpc/proto/enrollment_grpc_web_pb.js');
-    var requestService = new EnrollmentServiceClient(this.host);
+    const { EnrollmentServicePromiseClient } = require('./src/grpc/proto/enrollment_grpc_web_pb.js');
+    let requestService = new EnrollmentServicePromiseClient(this.host);
     grpc_promise.promisifyAll(requestService);
     return requestService;
   }
@@ -53,7 +53,6 @@ class Enrollment {
     request.setUsername(userName);
     request.setEmail(eMail);
     request.setClientversion(this.version);
-    request.setLanguage(this.language);
     return this.getService().enrollUser(request);
   }
 
@@ -84,6 +83,7 @@ class Enrollment {
     request.setPassword(password);
     return this.getService().resetPasswordFromToken(request);
   }
+
 }
 
 module.exports = Enrollment;
