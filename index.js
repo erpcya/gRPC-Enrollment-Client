@@ -58,15 +58,18 @@ class Enrollment {
 
   /**
    * Request Reset a Password
-   * @param {string} userName User Name
-   * @param {string} eMail User Mail
+   * @param {string} eMailOrUserName User Name or User eMail
    * @return {ResetPasswordResponse} Response Request
    */
-  requestResetPassword(userName, eMail) {
+  requestResetPassword(eMailOrUserName) {
     const { ResetPasswordRequest } = require('./src/grpc/proto/enrollment_pb.js');
     let request = new ResetPasswordRequest();
-    request.setUsername(userName);
-    request.setEmail(eMail);
+
+    if (eMailOrUserName.includes('@')) {
+      request.setEmail(eMailOrUserName);
+    } else {
+      request.setUsername(eMailOrUserName);
+    }
     return this.getService().resetPassword(request);
   }
 
