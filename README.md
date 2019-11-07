@@ -1,4 +1,13 @@
 # ADempiere Enrollment Client for gRPC
+
+[![npm version](https://img.shields.io/npm/v/@adempiere/grpc-enrollment-client.svg)](https://www.npmjs.com/package/@adempiere/grpc-enrollment-client)
+[![License](https://img.shields.io/npm/l/@adempiere/grpc-enrollment-client.svg)](https://github.com/erpcya/adempiere-gRPC-Server/blob/master/LICENSE)
+[![Downloads](https://img.shields.io/npm/dm/@adempiere/grpc-enrollment-client.svg)](https://www.npmjs.com/package/@adempiere/grpc-enrollment-client)
+<!--
+[![Dependencies](https://img.shields.io/librariesio/github/erpcya/grpc-enrollment-client.svg)](https://www.npmjs.com/package/@adempiere/grpc-enrollment-client)
+-->
+
+
 ADempiere Enrollment Client write in Javascript for gRPC service, use it for connect with
 [ADempiere-gRPC-Server](https://github.com/erpcya/adempiere-gRPC-Server).
 
