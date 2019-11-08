@@ -42,7 +42,7 @@ class Enrollment {
   /**
    * Get user roles assigned
    * @param {string} name Name
-   * @param {string} lastName Last ame
+   * @param {string} lastName Last name
    * @param {string} userName User Name
    * @param {string} eMail EMail
    * @param {string} password Password
