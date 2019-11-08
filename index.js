@@ -42,16 +42,22 @@ class Enrollment {
   /**
    * Get user roles assigned
    * @param {string} name Name
+   * @param {string} lastName Last ame
    * @param {string} userName User Name
    * @param {string} eMail EMail
+   * @param {string} password Password
    * @return {User} Enrolled User
    */
-  enrollUser(name, userName, eMail) {
+  enrollUser({ name, lastName, userName, eMail, password }) {
     const { EnrollUserRequest } = require('./src/grpc/proto/enrollment_pb.js');
     let request = new EnrollUserRequest();
     request.setName(name);
+    request.setLastname(lastName);
     request.setUsername(userName);
     request.setEmail(eMail);
+    if (password && password.trim() !== '') {
+      request.setPassword(password);
+    }
     request.setClientversion(this.version);
     return this.getService().enrollUser(request);
   }
