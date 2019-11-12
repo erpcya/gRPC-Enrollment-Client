@@ -47,13 +47,15 @@ class Enrollment {
    * @param {string} password password optional
    * @return {User} Enrolled User
    */
-  enrollUser(name, userName, eMail, password) {
+  enrollUser({ name, userName, eMail, password }) {
     const { EnrollUserRequest } = require('./src/grpc/proto/enrollment_pb.js');
     let request = new EnrollUserRequest();
     request.setName(name);
     request.setUsername(userName);
     request.setEmail(eMail);
-    request.setPassword(password);
+    if (password && password.trim() !== '') {
+      request.setPassword(password);
+    }
     request.setClientversion(this.version);
     return this.getService().enrollUser(request);
   }
