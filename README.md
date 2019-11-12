@@ -42,7 +42,7 @@ let enrollment = new Enrollment(GRPC_HOST, 'Version Epale');
 ### Request Enroll a user
 ```javascript
 //  Request Enroll a User
-//  Name, UserName, EMail
+//  Name, UserName, EMail, Password (Optional)
 enrollment.enrollUser('Hola Hola', 'hola', 'hola@hola.com')
 .then(user => {
   console.log('User Enrolled' + user);
@@ -78,6 +78,22 @@ Ok
 enrollment.resetPasswordFromToken('53c1c836-6e47-11e9-8160-3709b250e4e1', 'holaPass')
 .then(resetPasswordResponse => {
   console.log('Response for reset' + resetPasswordResponse);
+})
+.catch(err => console.log("Error: " + err.message));
+```
+
+Output
+```
+Ok
+```
+
+### Request Activate User
+```javascript
+//  Request Activate User
+//  Token
+enrollment.activateUser('53c1c836-6e47-11e9-8160-3709b250e4e1')
+.then(activateUserResponse => {
+  console.log('Response for activate' + activateUserResponse);
 })
 .catch(err => console.log("Error: " + err.message));
 ```

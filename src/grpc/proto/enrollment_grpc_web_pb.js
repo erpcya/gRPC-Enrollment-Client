@@ -251,5 +251,60 @@ proto.enrollment.EnrollmentServicePromiseClient.prototype.resetPasswordFromToken
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.enrollment.ActivateUserRequest,
+ *   !proto.enrollment.ActivateUserResponse>}
+ */
+const methodInfo_EnrollmentService_ActivateUser = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.enrollment.ActivateUserResponse,
+  /** @param {!proto.enrollment.ActivateUserRequest} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.enrollment.ActivateUserResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.enrollment.ActivateUserRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.enrollment.ActivateUserResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.enrollment.ActivateUserResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.enrollment.EnrollmentServiceClient.prototype.activateUser =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/enrollment.EnrollmentService/ActivateUser',
+      request,
+      metadata || {},
+      methodInfo_EnrollmentService_ActivateUser,
+      callback);
+};
+
+
+/**
+ * @param {!proto.enrollment.ActivateUserRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.enrollment.ActivateUserResponse>}
+ *     A native promise that resolves to the response
+ */
+proto.enrollment.EnrollmentServicePromiseClient.prototype.activateUser =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/enrollment.EnrollmentService/ActivateUser',
+      request,
+      metadata || {},
+      methodInfo_EnrollmentService_ActivateUser);
+};
+
+
 module.exports = proto.enrollment;
 

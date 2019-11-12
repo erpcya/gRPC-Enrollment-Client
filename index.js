@@ -44,14 +44,16 @@ class Enrollment {
    * @param {string} name Name
    * @param {string} userName User Name
    * @param {string} eMail EMail
+   * @param {string} password password optional
    * @return {User} Enrolled User
    */
-  enrollUser(name, userName, eMail) {
+  enrollUser(name, userName, eMail, password) {
     const { EnrollUserRequest } = require('./src/grpc/proto/enrollment_pb.js');
     let request = new EnrollUserRequest();
     request.setName(name);
     request.setUsername(userName);
     request.setEmail(eMail);
+    request.setPassword(password);
     request.setClientversion(this.version);
     return this.getService().enrollUser(request);
   }
@@ -87,6 +89,18 @@ class Enrollment {
     return this.getService().resetPasswordFromToken(request);
   }
 
+  /**
+   * Request Activate a user from token
+   * @param {string} token token assigned
+   * @return {ActivateUserResponse} Response Request
+   */
+  activateUser(token) {
+    const { ActivateUserRequest } = require('./src/grpc/proto/enrollment_pb.js');
+    let request = new ActivateUserRequest();
+    request.setToken(token);
+    request.setClientversion(this.version);
+    return this.getService().activateUser(request);
+  }
 }
 
 module.exports = Enrollment;
