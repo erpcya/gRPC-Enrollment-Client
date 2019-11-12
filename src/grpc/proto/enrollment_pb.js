@@ -201,7 +201,6 @@ proto.enrollment.EnrollUserRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     username: jspb.Message.getFieldWithDefault(msg, 1, ""),
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    lastname: jspb.Message.getFieldWithDefault(msg, 3, ""),
     email: jspb.Message.getFieldWithDefault(msg, 4, ""),
     clientversion: jspb.Message.getFieldWithDefault(msg, 5, ""),
     applicationtype: jspb.Message.getFieldWithDefault(msg, 6, ""),
@@ -249,10 +248,6 @@ proto.enrollment.EnrollUserRequest.deserializeBinaryFromReader = function(msg, r
     case 2:
       var value = /** @type {string} */ (reader.readString());
       msg.setName(value);
-      break;
-    case 3:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setLastname(value);
       break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
@@ -310,13 +305,6 @@ proto.enrollment.EnrollUserRequest.serializeBinaryToWriter = function(message, w
   if (f.length > 0) {
     writer.writeString(
       2,
-      f
-    );
-  }
-  f = message.getLastname();
-  if (f.length > 0) {
-    writer.writeString(
-      3,
       f
     );
   }
@@ -378,21 +366,6 @@ proto.enrollment.EnrollUserRequest.prototype.getName = function() {
 /** @param {string} value */
 proto.enrollment.EnrollUserRequest.prototype.setName = function(value) {
   jspb.Message.setProto3StringField(this, 2, value);
-};
-
-
-/**
- * optional string lastName = 3;
- * @return {string}
- */
-proto.enrollment.EnrollUserRequest.prototype.getLastname = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
-};
-
-
-/** @param {string} value */
-proto.enrollment.EnrollUserRequest.prototype.setLastname = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
