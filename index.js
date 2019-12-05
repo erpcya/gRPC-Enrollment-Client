@@ -34,7 +34,7 @@ class Enrollment {
   getService() {
     const grpc_promise = require('grpc-promise');
     const { EnrollmentServicePromiseClient } = require('./src/grpc/proto/enrollment_grpc_web_pb.js');
-    let requestService = new EnrollmentServicePromiseClient(this.host);
+    const requestService = new EnrollmentServicePromiseClient(this.host);
     grpc_promise.promisifyAll(requestService);
     return requestService;
   }
@@ -49,7 +49,7 @@ class Enrollment {
    */
   enrollUser({ name, userName, eMail, password }) {
     const { EnrollUserRequest } = require('./src/grpc/proto/enrollment_pb.js');
-    let request = new EnrollUserRequest();
+    const request = new EnrollUserRequest();
     request.setName(name);
     request.setUsername(userName);
     request.setEmail(eMail);
@@ -57,7 +57,14 @@ class Enrollment {
       request.setPassword(password);
     }
     request.setClientversion(this.version);
-    return this.getService().enrollUser(request);
+    return this.getService().enrollUser(request)
+      .then(enrollUserResponse => {
+        return {
+	        name: enrollUserResponse.getUser(),
+	        userName: enrollUserResponse.getUsername(),
+	        eMail: enrollUserResponse.getEmail()
+        };
+      });
   }
 
   /**
@@ -66,15 +73,26 @@ class Enrollment {
    * @return {ResetPasswordResponse} Response Request
    */
   requestResetPassword(eMailOrUserName) {
-    const { ResetPasswordRequest } = require('./src/grpc/proto/enrollment_pb.js');
-    let request = new ResetPasswordRequest();
+    const { ResetPasswordRequest, ResetPasswordResponse } = require('./src/grpc/proto/enrollment_pb.js');
+    const request = new ResetPasswordRequest();
 
     if (eMailOrUserName.includes('@')) {
       request.setEmail(eMailOrUserName);
     } else {
       request.setUsername(eMailOrUserName);
     }
-    return this.getService().resetPassword(request);
+
+    return this.getService().resetPassword(request)
+      .then(responseResetPassword => {
+        const status = Object.keys(ResetPasswordResponse.ResponseType).find(key => {
+          return ResetPasswordResponse.ResponseType[key] === responseResetPassword.getResponsetype()
+        });
+
+        return {
+          responseType: responseResetPassword.getResponsetype(),
+          responseTypeStatus: status
+        };
+      });
   }
 
   /**
@@ -83,12 +101,22 @@ class Enrollment {
    * @param {string} password Password to reset
    * @return {ResetPasswordResponse} Response Request
    */
-  resetPasswordFromToken(token, password) {
-    const { ResetPasswordTokenRequest } = require('./src/grpc/proto/enrollment_pb.js');
-    let request = new ResetPasswordTokenRequest();
+  resetPasswordFromToken({ token, password }) {
+    const { ResetPasswordTokenRequest, ResetPasswordResponse } = require('./src/grpc/proto/enrollment_pb.js');
+    const request = new ResetPasswordTokenRequest();
     request.setToken(token);
     request.setPassword(password);
-    return this.getService().resetPasswordFromToken(request);
+    return this.getService().resetPasswordFromToken(request)
+      .then(responseResetPassword => {
+        const status = Object.keys(ResetPasswordResponse.ResponseType).find(key => {
+          return ResetPasswordResponse.ResponseType[key] === responseResetPassword.getResponsetype()
+        });
+
+        return {
+          responseType: responseResetPassword.getResponsetype(),
+          responseTypeStatus: status
+        };
+      });
   }
 
   /**
@@ -97,12 +125,23 @@ class Enrollment {
    * @return {ActivateUserResponse} Response Request
    */
   activateUser(token) {
-    const { ActivateUserRequest } = require('./src/grpc/proto/enrollment_pb.js');
-    let request = new ActivateUserRequest();
+    const { ActivateUserRequest, ActivateUserResponse } = require('./src/grpc/proto/enrollment_pb.js');
+    const request = new ActivateUserRequest();
     request.setToken(token);
     request.setClientversion(this.version);
-    return this.getService().activateUser(request);
+    return this.getService().activateUser(request)
+      .then(responseActivateUser => {
+        const status = Object.keys(ActivateUserRequest.ResponseType).find(key => {
+          return ActivateUserRequest.ResponseType[key] === responseActivateUser.getResponsetype()
+        });
+
+        return {
+          responseType: responseActivateUser.getResponsetype(),
+          responseTypeStatus: status
+        };
+      });
   }
+
 }
 
 module.exports = Enrollment;
