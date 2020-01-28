@@ -60,7 +60,7 @@ class Enrollment {
     return this.getService().enrollUser(request)
       .then(enrollUserResponse => {
         return {
-	        name: enrollUserResponse.getUser(),
+	        name: enrollUserResponse.getName(),
 	        userName: enrollUserResponse.getUsername(),
 	        eMail: enrollUserResponse.getEmail()
         };
