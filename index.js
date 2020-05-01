@@ -33,8 +33,8 @@ class Enrollment {
    */
   getService() {
     const grpc_promise = require('grpc-promise');
-    const { EnrollmentServicePromiseClient } = require('./src/grpc/proto/enrollment_grpc_web_pb.js');
-    const requestService = new EnrollmentServicePromiseClient(this.host);
+    const { RegisterPromiseClient } = require('./src/grpc/proto/enrollment_grpc_web_pb.js');
+    const requestService = new RegisterPromiseClient(this.host);
     grpc_promise.promisifyAll(requestService);
     return requestService;
   }

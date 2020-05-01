@@ -22,7 +22,7 @@ proto.enrollment = require('./enrollment_pb.js');
  * @struct
  * @final
  */
-proto.enrollment.EnrollmentServiceClient =
+proto.enrollment.RegisterClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -58,7 +58,7 @@ proto.enrollment.EnrollmentServiceClient =
  * @struct
  * @final
  */
-proto.enrollment.EnrollmentServicePromiseClient =
+proto.enrollment.RegisterPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -92,7 +92,7 @@ proto.enrollment.EnrollmentServicePromiseClient =
  *   !proto.enrollment.EnrollUserRequest,
  *   !proto.enrollment.User>}
  */
-const methodInfo_EnrollmentService_EnrollUser = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_Register_EnrollUser = new grpc.web.AbstractClientBase.MethodInfo(
   proto.enrollment.User,
   /** @param {!proto.enrollment.EnrollUserRequest} request */
   function(request) {
@@ -112,13 +112,13 @@ const methodInfo_EnrollmentService_EnrollUser = new grpc.web.AbstractClientBase.
  * @return {!grpc.web.ClientReadableStream<!proto.enrollment.User>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.enrollment.EnrollmentServiceClient.prototype.enrollUser =
+proto.enrollment.RegisterClient.prototype.enrollUser =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/enrollment.EnrollmentService/EnrollUser',
+      '/enrollment.Register/EnrollUser',
       request,
       metadata || {},
-      methodInfo_EnrollmentService_EnrollUser,
+      methodInfo_Register_EnrollUser,
       callback);
 };
 
@@ -131,13 +131,13 @@ proto.enrollment.EnrollmentServiceClient.prototype.enrollUser =
  * @return {!Promise<!proto.enrollment.User>}
  *     A native promise that resolves to the response
  */
-proto.enrollment.EnrollmentServicePromiseClient.prototype.enrollUser =
+proto.enrollment.RegisterPromiseClient.prototype.enrollUser =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/enrollment.EnrollmentService/EnrollUser',
+      '/enrollment.Register/EnrollUser',
       request,
       metadata || {},
-      methodInfo_EnrollmentService_EnrollUser);
+      methodInfo_Register_EnrollUser);
 };
 
 
@@ -147,7 +147,7 @@ proto.enrollment.EnrollmentServicePromiseClient.prototype.enrollUser =
  *   !proto.enrollment.ResetPasswordRequest,
  *   !proto.enrollment.ResetPasswordResponse>}
  */
-const methodInfo_EnrollmentService_ResetPassword = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_Register_ResetPassword = new grpc.web.AbstractClientBase.MethodInfo(
   proto.enrollment.ResetPasswordResponse,
   /** @param {!proto.enrollment.ResetPasswordRequest} request */
   function(request) {
@@ -167,13 +167,13 @@ const methodInfo_EnrollmentService_ResetPassword = new grpc.web.AbstractClientBa
  * @return {!grpc.web.ClientReadableStream<!proto.enrollment.ResetPasswordResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.enrollment.EnrollmentServiceClient.prototype.resetPassword =
+proto.enrollment.RegisterClient.prototype.resetPassword =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/enrollment.EnrollmentService/ResetPassword',
+      '/enrollment.Register/ResetPassword',
       request,
       metadata || {},
-      methodInfo_EnrollmentService_ResetPassword,
+      methodInfo_Register_ResetPassword,
       callback);
 };
 
@@ -186,13 +186,13 @@ proto.enrollment.EnrollmentServiceClient.prototype.resetPassword =
  * @return {!Promise<!proto.enrollment.ResetPasswordResponse>}
  *     A native promise that resolves to the response
  */
-proto.enrollment.EnrollmentServicePromiseClient.prototype.resetPassword =
+proto.enrollment.RegisterPromiseClient.prototype.resetPassword =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/enrollment.EnrollmentService/ResetPassword',
+      '/enrollment.Register/ResetPassword',
       request,
       metadata || {},
-      methodInfo_EnrollmentService_ResetPassword);
+      methodInfo_Register_ResetPassword);
 };
 
 
@@ -202,7 +202,7 @@ proto.enrollment.EnrollmentServicePromiseClient.prototype.resetPassword =
  *   !proto.enrollment.ResetPasswordTokenRequest,
  *   !proto.enrollment.ResetPasswordResponse>}
  */
-const methodInfo_EnrollmentService_ResetPasswordFromToken = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_Register_ResetPasswordFromToken = new grpc.web.AbstractClientBase.MethodInfo(
   proto.enrollment.ResetPasswordResponse,
   /** @param {!proto.enrollment.ResetPasswordTokenRequest} request */
   function(request) {
@@ -222,13 +222,13 @@ const methodInfo_EnrollmentService_ResetPasswordFromToken = new grpc.web.Abstrac
  * @return {!grpc.web.ClientReadableStream<!proto.enrollment.ResetPasswordResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.enrollment.EnrollmentServiceClient.prototype.resetPasswordFromToken =
+proto.enrollment.RegisterClient.prototype.resetPasswordFromToken =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/enrollment.EnrollmentService/ResetPasswordFromToken',
+      '/enrollment.Register/ResetPasswordFromToken',
       request,
       metadata || {},
-      methodInfo_EnrollmentService_ResetPasswordFromToken,
+      methodInfo_Register_ResetPasswordFromToken,
       callback);
 };
 
@@ -241,13 +241,13 @@ proto.enrollment.EnrollmentServiceClient.prototype.resetPasswordFromToken =
  * @return {!Promise<!proto.enrollment.ResetPasswordResponse>}
  *     A native promise that resolves to the response
  */
-proto.enrollment.EnrollmentServicePromiseClient.prototype.resetPasswordFromToken =
+proto.enrollment.RegisterPromiseClient.prototype.resetPasswordFromToken =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/enrollment.EnrollmentService/ResetPasswordFromToken',
+      '/enrollment.Register/ResetPasswordFromToken',
       request,
       metadata || {},
-      methodInfo_EnrollmentService_ResetPasswordFromToken);
+      methodInfo_Register_ResetPasswordFromToken);
 };
 
 
@@ -257,7 +257,7 @@ proto.enrollment.EnrollmentServicePromiseClient.prototype.resetPasswordFromToken
  *   !proto.enrollment.ActivateUserRequest,
  *   !proto.enrollment.ActivateUserResponse>}
  */
-const methodInfo_EnrollmentService_ActivateUser = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_Register_ActivateUser = new grpc.web.AbstractClientBase.MethodInfo(
   proto.enrollment.ActivateUserResponse,
   /** @param {!proto.enrollment.ActivateUserRequest} request */
   function(request) {
@@ -277,13 +277,13 @@ const methodInfo_EnrollmentService_ActivateUser = new grpc.web.AbstractClientBas
  * @return {!grpc.web.ClientReadableStream<!proto.enrollment.ActivateUserResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.enrollment.EnrollmentServiceClient.prototype.activateUser =
+proto.enrollment.RegisterClient.prototype.activateUser =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/enrollment.EnrollmentService/ActivateUser',
+      '/enrollment.Register/ActivateUser',
       request,
       metadata || {},
-      methodInfo_EnrollmentService_ActivateUser,
+      methodInfo_Register_ActivateUser,
       callback);
 };
 
@@ -296,13 +296,13 @@ proto.enrollment.EnrollmentServiceClient.prototype.activateUser =
  * @return {!Promise<!proto.enrollment.ActivateUserResponse>}
  *     A native promise that resolves to the response
  */
-proto.enrollment.EnrollmentServicePromiseClient.prototype.activateUser =
+proto.enrollment.RegisterPromiseClient.prototype.activateUser =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/enrollment.EnrollmentService/ActivateUser',
+      '/enrollment.Register/ActivateUser',
       request,
       metadata || {},
-      methodInfo_EnrollmentService_ActivateUser);
+      methodInfo_Register_ActivateUser);
 };
 
 
