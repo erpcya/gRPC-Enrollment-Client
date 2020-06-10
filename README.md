@@ -108,6 +108,16 @@ For recreate stub class you must have follow:
 - Also you can see it: [gRPC-web](https://github.com/grpc/grpc-web)
 - [gRPC](https://grpc.io/docs/tutorials/basic/web.html)
 
+Note: You can also install `protoc` and `protoc-gen-grpc-web` by going to the repository directory and run the command:
+```Shell
+sh install-protoc.sh
+```
+
+When installation is complete, check the version with
+```Shell
+protoc --version
+```
+
 After installed it just go to source code folder an run it:
 
 Run Enrollment gRPC
