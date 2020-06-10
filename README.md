@@ -1,11 +1,9 @@
 # ADempiere Enrollment Client for gRPC
 
 [![npm version](https://img.shields.io/npm/v/@adempiere/grpc-enrollment-client.svg)](https://www.npmjs.com/package/@adempiere/grpc-enrollment-client)
-[![License](https://img.shields.io/npm/l/@adempiere/grpc-enrollment-client.svg)](https://github.com/erpcya/adempiere-gRPC-Server/blob/master/LICENSE)
+[![License](https://img.shields.io/npm/l/@adempiere/grpc-enrollment-client.svg)](https://github.com/erpcya/grpc-enrollment-client/blob/master/LICENSE)
 [![Downloads](https://img.shields.io/npm/dm/@adempiere/grpc-enrollment-client.svg)](https://www.npmjs.com/package/@adempiere/grpc-enrollment-client)
-<!--
 [![Dependencies](https://img.shields.io/librariesio/github/erpcya/grpc-enrollment-client.svg)](https://www.npmjs.com/package/@adempiere/grpc-enrollment-client)
--->
 
 
 ADempiere Enrollment Client write in Javascript for gRPC service, use it for connect with
@@ -19,7 +17,7 @@ ADempiere Enrollment Client write in Javascript for gRPC service, use it for con
 
 ``` bash
 # installing via NPM
-npm install @adempiere/grpc-enrollment-client
+npm install @adempiere/grpc-enrollment-client --save
 ```
 ``` bash
 # installing via Yarn
@@ -109,10 +107,21 @@ For recreate stub class you must have follow:
 - [protoc](https://github.com/grpc/grpc-web/releases)
 - Also you can see it: [gRPC-web](https://github.com/grpc/grpc-web)
 - [gRPC](https://grpc.io/docs/tutorials/basic/web.html)
+
 After installed it just go to source code folder an run it:
-```
+
+Run Enrollment gRPC
+```Shell
 protoc proto/enrollment.proto \
 --js_out=import_style=commonjs:src/grpc \
 --grpc-web_out=import_style=commonjs,mode=grpcwebtext:src/grpc
 ```
+
+Or run:
+```Shell
+sh generate-stub.sh
+```
+
 The result is generated on: src/grpc folder
+- `enrollment_grpc_web_pb.js`
+- `enrollment_pb.js`
