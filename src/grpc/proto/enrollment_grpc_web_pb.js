@@ -7,6 +7,10 @@
 // GENERATED CODE -- DO NOT EDIT!
 
 
+/* eslint-disable */
+// @ts-nocheck
+
+
 
 const grpc = {};
 grpc.web = require('grpc-web');
@@ -37,16 +41,6 @@ proto.enrollment.RegisterClient =
    */
   this.hostname_ = hostname;
 
-  /**
-   * @private @const {?Object} The credentials to be used to connect
-   *    to the server
-   */
-  this.credentials_ = credentials;
-
-  /**
-   * @private @const {?Object} Options for the client
-   */
-  this.options_ = options;
 };
 
 
@@ -73,17 +67,29 @@ proto.enrollment.RegisterPromiseClient =
    */
   this.hostname_ = hostname;
 
-  /**
-   * @private @const {?Object} The credentials to be used to connect
-   *    to the server
-   */
-  this.credentials_ = credentials;
-
-  /**
-   * @private @const {?Object} Options for the client
-   */
-  this.options_ = options;
 };
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.enrollment.EnrollUserRequest,
+ *   !proto.enrollment.User>}
+ */
+const methodDescriptor_Register_EnrollUser = new grpc.web.MethodDescriptor(
+  '/enrollment.Register/EnrollUser',
+  grpc.web.MethodType.UNARY,
+  proto.enrollment.EnrollUserRequest,
+  proto.enrollment.User,
+  /**
+   * @param {!proto.enrollment.EnrollUserRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.enrollment.User.deserializeBinary
+);
 
 
 /**
@@ -94,7 +100,10 @@ proto.enrollment.RegisterPromiseClient =
  */
 const methodInfo_Register_EnrollUser = new grpc.web.AbstractClientBase.MethodInfo(
   proto.enrollment.User,
-  /** @param {!proto.enrollment.EnrollUserRequest} request */
+  /**
+   * @param {!proto.enrollment.EnrollUserRequest} request
+   * @return {!Uint8Array}
+   */
   function(request) {
     return request.serializeBinary();
   },
@@ -118,7 +127,7 @@ proto.enrollment.RegisterClient.prototype.enrollUser =
       '/enrollment.Register/EnrollUser',
       request,
       metadata || {},
-      methodInfo_Register_EnrollUser,
+      methodDescriptor_Register_EnrollUser,
       callback);
 };
 
@@ -137,8 +146,30 @@ proto.enrollment.RegisterPromiseClient.prototype.enrollUser =
       '/enrollment.Register/EnrollUser',
       request,
       metadata || {},
-      methodInfo_Register_EnrollUser);
+      methodDescriptor_Register_EnrollUser);
 };
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.enrollment.ResetPasswordRequest,
+ *   !proto.enrollment.ResetPasswordResponse>}
+ */
+const methodDescriptor_Register_ResetPassword = new grpc.web.MethodDescriptor(
+  '/enrollment.Register/ResetPassword',
+  grpc.web.MethodType.UNARY,
+  proto.enrollment.ResetPasswordRequest,
+  proto.enrollment.ResetPasswordResponse,
+  /**
+   * @param {!proto.enrollment.ResetPasswordRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.enrollment.ResetPasswordResponse.deserializeBinary
+);
 
 
 /**
@@ -149,7 +180,10 @@ proto.enrollment.RegisterPromiseClient.prototype.enrollUser =
  */
 const methodInfo_Register_ResetPassword = new grpc.web.AbstractClientBase.MethodInfo(
   proto.enrollment.ResetPasswordResponse,
-  /** @param {!proto.enrollment.ResetPasswordRequest} request */
+  /**
+   * @param {!proto.enrollment.ResetPasswordRequest} request
+   * @return {!Uint8Array}
+   */
   function(request) {
     return request.serializeBinary();
   },
@@ -173,7 +207,7 @@ proto.enrollment.RegisterClient.prototype.resetPassword =
       '/enrollment.Register/ResetPassword',
       request,
       metadata || {},
-      methodInfo_Register_ResetPassword,
+      methodDescriptor_Register_ResetPassword,
       callback);
 };
 
@@ -192,8 +226,30 @@ proto.enrollment.RegisterPromiseClient.prototype.resetPassword =
       '/enrollment.Register/ResetPassword',
       request,
       metadata || {},
-      methodInfo_Register_ResetPassword);
+      methodDescriptor_Register_ResetPassword);
 };
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.enrollment.ResetPasswordTokenRequest,
+ *   !proto.enrollment.ResetPasswordResponse>}
+ */
+const methodDescriptor_Register_ResetPasswordFromToken = new grpc.web.MethodDescriptor(
+  '/enrollment.Register/ResetPasswordFromToken',
+  grpc.web.MethodType.UNARY,
+  proto.enrollment.ResetPasswordTokenRequest,
+  proto.enrollment.ResetPasswordResponse,
+  /**
+   * @param {!proto.enrollment.ResetPasswordTokenRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.enrollment.ResetPasswordResponse.deserializeBinary
+);
 
 
 /**
@@ -204,7 +260,10 @@ proto.enrollment.RegisterPromiseClient.prototype.resetPassword =
  */
 const methodInfo_Register_ResetPasswordFromToken = new grpc.web.AbstractClientBase.MethodInfo(
   proto.enrollment.ResetPasswordResponse,
-  /** @param {!proto.enrollment.ResetPasswordTokenRequest} request */
+  /**
+   * @param {!proto.enrollment.ResetPasswordTokenRequest} request
+   * @return {!Uint8Array}
+   */
   function(request) {
     return request.serializeBinary();
   },
@@ -228,7 +287,7 @@ proto.enrollment.RegisterClient.prototype.resetPasswordFromToken =
       '/enrollment.Register/ResetPasswordFromToken',
       request,
       metadata || {},
-      methodInfo_Register_ResetPasswordFromToken,
+      methodDescriptor_Register_ResetPasswordFromToken,
       callback);
 };
 
@@ -247,8 +306,30 @@ proto.enrollment.RegisterPromiseClient.prototype.resetPasswordFromToken =
       '/enrollment.Register/ResetPasswordFromToken',
       request,
       metadata || {},
-      methodInfo_Register_ResetPasswordFromToken);
+      methodDescriptor_Register_ResetPasswordFromToken);
 };
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.enrollment.ActivateUserRequest,
+ *   !proto.enrollment.ActivateUserResponse>}
+ */
+const methodDescriptor_Register_ActivateUser = new grpc.web.MethodDescriptor(
+  '/enrollment.Register/ActivateUser',
+  grpc.web.MethodType.UNARY,
+  proto.enrollment.ActivateUserRequest,
+  proto.enrollment.ActivateUserResponse,
+  /**
+   * @param {!proto.enrollment.ActivateUserRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.enrollment.ActivateUserResponse.deserializeBinary
+);
 
 
 /**
@@ -259,7 +340,10 @@ proto.enrollment.RegisterPromiseClient.prototype.resetPasswordFromToken =
  */
 const methodInfo_Register_ActivateUser = new grpc.web.AbstractClientBase.MethodInfo(
   proto.enrollment.ActivateUserResponse,
-  /** @param {!proto.enrollment.ActivateUserRequest} request */
+  /**
+   * @param {!proto.enrollment.ActivateUserRequest} request
+   * @return {!Uint8Array}
+   */
   function(request) {
     return request.serializeBinary();
   },
@@ -283,7 +367,7 @@ proto.enrollment.RegisterClient.prototype.activateUser =
       '/enrollment.Register/ActivateUser',
       request,
       metadata || {},
-      methodInfo_Register_ActivateUser,
+      methodDescriptor_Register_ActivateUser,
       callback);
 };
 
@@ -302,7 +386,7 @@ proto.enrollment.RegisterPromiseClient.prototype.activateUser =
       '/enrollment.Register/ActivateUser',
       request,
       metadata || {},
-      methodInfo_Register_ActivateUser);
+      methodDescriptor_Register_ActivateUser);
 };
 
 

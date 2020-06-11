@@ -1,3 +1,4 @@
+// source: proto/enrollment.proto
 /**
  * @fileoverview
  * @enhanceable
@@ -348,9 +349,12 @@ proto.enrollment.EnrollUserRequest.prototype.getUsername = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.enrollment.EnrollUserRequest} returns this
+ */
 proto.enrollment.EnrollUserRequest.prototype.setUsername = function(value) {
-  jspb.Message.setProto3StringField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -363,9 +367,12 @@ proto.enrollment.EnrollUserRequest.prototype.getName = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.enrollment.EnrollUserRequest} returns this
+ */
 proto.enrollment.EnrollUserRequest.prototype.setName = function(value) {
-  jspb.Message.setProto3StringField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -378,9 +385,12 @@ proto.enrollment.EnrollUserRequest.prototype.getEmail = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.enrollment.EnrollUserRequest} returns this
+ */
 proto.enrollment.EnrollUserRequest.prototype.setEmail = function(value) {
-  jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
@@ -393,9 +403,12 @@ proto.enrollment.EnrollUserRequest.prototype.getClientversion = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.enrollment.EnrollUserRequest} returns this
+ */
 proto.enrollment.EnrollUserRequest.prototype.setClientversion = function(value) {
-  jspb.Message.setProto3StringField(this, 5, value);
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
@@ -408,9 +421,12 @@ proto.enrollment.EnrollUserRequest.prototype.getApplicationtype = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.enrollment.EnrollUserRequest} returns this
+ */
 proto.enrollment.EnrollUserRequest.prototype.setApplicationtype = function(value) {
-  jspb.Message.setProto3StringField(this, 6, value);
+  return jspb.Message.setProto3StringField(this, 6, value);
 };
 
 
@@ -423,9 +439,12 @@ proto.enrollment.EnrollUserRequest.prototype.getPassword = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.enrollment.EnrollUserRequest} returns this
+ */
 proto.enrollment.EnrollUserRequest.prototype.setPassword = function(value) {
-  jspb.Message.setProto3StringField(this, 7, value);
+  return jspb.Message.setProto3StringField(this, 7, value);
 };
 
 
@@ -574,9 +593,12 @@ proto.enrollment.ResetPasswordRequest.prototype.getUsername = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.enrollment.ResetPasswordRequest} returns this
+ */
 proto.enrollment.ResetPasswordRequest.prototype.setUsername = function(value) {
-  jspb.Message.setProto3StringField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -589,9 +611,12 @@ proto.enrollment.ResetPasswordRequest.prototype.getEmail = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.enrollment.ResetPasswordRequest} returns this
+ */
 proto.enrollment.ResetPasswordRequest.prototype.setEmail = function(value) {
-  jspb.Message.setProto3StringField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -604,9 +629,12 @@ proto.enrollment.ResetPasswordRequest.prototype.getClientversion = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.enrollment.ResetPasswordRequest} returns this
+ */
 proto.enrollment.ResetPasswordRequest.prototype.setClientversion = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -755,9 +783,12 @@ proto.enrollment.ResetPasswordTokenRequest.prototype.getToken = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.enrollment.ResetPasswordTokenRequest} returns this
+ */
 proto.enrollment.ResetPasswordTokenRequest.prototype.setToken = function(value) {
-  jspb.Message.setProto3StringField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -770,9 +801,12 @@ proto.enrollment.ResetPasswordTokenRequest.prototype.getPassword = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.enrollment.ResetPasswordTokenRequest} returns this
+ */
 proto.enrollment.ResetPasswordTokenRequest.prototype.setPassword = function(value) {
-  jspb.Message.setProto3StringField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -785,9 +819,12 @@ proto.enrollment.ResetPasswordTokenRequest.prototype.getClientversion = function
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.enrollment.ResetPasswordTokenRequest} returns this
+ */
 proto.enrollment.ResetPasswordTokenRequest.prototype.setClientversion = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -924,9 +961,12 @@ proto.enrollment.ActivateUserRequest.prototype.getToken = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.enrollment.ActivateUserRequest} returns this
+ */
 proto.enrollment.ActivateUserRequest.prototype.setToken = function(value) {
-  jspb.Message.setProto3StringField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -939,9 +979,12 @@ proto.enrollment.ActivateUserRequest.prototype.getClientversion = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.enrollment.ActivateUserRequest} returns this
+ */
 proto.enrollment.ActivateUserRequest.prototype.setClientversion = function(value) {
-  jspb.Message.setProto3StringField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -1090,9 +1133,12 @@ proto.enrollment.User.prototype.getUsername = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.enrollment.User} returns this
+ */
 proto.enrollment.User.prototype.setUsername = function(value) {
-  jspb.Message.setProto3StringField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -1105,9 +1151,12 @@ proto.enrollment.User.prototype.getName = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.enrollment.User} returns this
+ */
 proto.enrollment.User.prototype.setName = function(value) {
-  jspb.Message.setProto3StringField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -1120,9 +1169,12 @@ proto.enrollment.User.prototype.getEmail = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.enrollment.User} returns this
+ */
 proto.enrollment.User.prototype.setEmail = function(value) {
-  jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
@@ -1257,9 +1309,12 @@ proto.enrollment.ResetPasswordResponse.prototype.getResponsetype = function() {
 };
 
 
-/** @param {!proto.enrollment.ResetPasswordResponse.ResponseType} value */
+/**
+ * @param {!proto.enrollment.ResetPasswordResponse.ResponseType} value
+ * @return {!proto.enrollment.ResetPasswordResponse} returns this
+ */
 proto.enrollment.ResetPasswordResponse.prototype.setResponsetype = function(value) {
-  jspb.Message.setProto3EnumField(this, 1, value);
+  return jspb.Message.setProto3EnumField(this, 1, value);
 };
 
 
@@ -1393,9 +1448,12 @@ proto.enrollment.ActivateUserResponse.prototype.getResponsetype = function() {
 };
 
 
-/** @param {!proto.enrollment.ActivateUserResponse.ResponseType} value */
+/**
+ * @param {!proto.enrollment.ActivateUserResponse.ResponseType} value
+ * @return {!proto.enrollment.ActivateUserResponse} returns this
+ */
 proto.enrollment.ActivateUserResponse.prototype.setResponsetype = function(value) {
-  jspb.Message.setProto3EnumField(this, 1, value);
+  return jspb.Message.setProto3EnumField(this, 1, value);
 };
 
 
